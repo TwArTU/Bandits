@@ -65,12 +65,12 @@ if __name__=='__main__':
         
         posttraining_results = bandits.run(posttraining_inputs)
         
-        q,a,r = posttraining_results
+        q_table_hist, action_hist, reward_hist = posttraining_results
         # print(len(q), q)
         # print(a)
         # print(r)
-        plt.plot(np.arange(posttraining_steps), r)
-        plt.scatter(np.arange(posttraining_steps), a, s=10, c='magenta')
+        plt.plot(np.arange(posttraining_steps), reward_hist)
+        plt.scatter(np.arange(posttraining_steps), action_hist, s=10, c='magenta')
         
         plt.xlabel("step")
         plt.ylabel("reward")
