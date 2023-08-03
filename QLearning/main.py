@@ -45,12 +45,16 @@ if __name__=='__main__':
     epsilon = 0.1
     alpha = 0.007
     gamma = 0.9
-    training_steps = 20000
+    training_steps = 20000      # トレーニング回数
     training_inputs = generate_inputs(m, training_steps)
-    posttraining_steps = 200
+    posttraining_steps = 200    # トレーニング後の学習結果を見る
     posttraining_inputs = generate_inputs(m, posttraining_steps)
 
     def reward_sim(reward_func: RewardFunc, figname: str):
+        '''
+        reward function 比較用
+        実行部分ではreward probability が異なり、reward function は同じものを比較している
+        '''
         action_policy = EpsilonGreedy(epsilon)
         learning_rule = QLearning(alpha, gamma)
         agent = BanditsAgent(m,n,learning_rule,action_policy)
